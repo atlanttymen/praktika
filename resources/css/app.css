@@ -1,0 +1,1228 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* * {
+outline: 1px solid red;
+outline-offset: -1px;
+} */
+
+body {
+    background-color: white;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+    padding-right: 0px !important;
+    padding-bottom: 200px;
+}
+
+body a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.list-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btnnav {
+    transition: 0.5s ease;
+    background-color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 18px;
+    padding: 5px 10px 5px 10px;
+}
+
+.btnnav:hover {
+    transform: translateY(1px);
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btnCreate {
+    position: relative;
+}
+
+
+
+.controls {
+    position: relative;
+    left: 70px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    white-space: nowrap;
+}
+
+.panel {
+    position: relative;
+    background-color: white;
+    z-index: 2;
+    padding: 25px;
+    top: 120px;
+    padding-right: 45px;
+    height: 80px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 18px;
+}
+
+.panel::before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    background-color: rgb(255, 255, 255);
+}
+
+.date-input {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease;
+    transform: translateX(-10px);
+    position: absolute;
+    margin-left: 15px;
+    left: 50px;
+    top: -2px;
+    border: none;
+    max-width: 130px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.103);
+    height: 30px;
+}
+
+.dateLabel {
+    cursor: pointer;
+    padding-right: 100px;
+}
+
+#date-checkbox {
+    margin-left: -5px;
+}
+
+[type="checkbox"] {
+    width: 0;
+    height: 0;
+}
+
+input[type="checkbox"]:checked ~ .date-input {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.logo {
+    position: absolute;
+    z-index: 9999;
+    left: 6px;
+    bottom: 15px;
+}
+
+.logo i {
+    font-size: 52px;
+}
+
+.windows-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.window {
+    transition: 0.5s ease;
+    position: relative;
+    padding: 25px;
+    margin-top: 20px;
+    top: 150px;
+    width: 100%;
+    min-width: 630px !important;
+    height: 250px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 18px;
+}
+
+.windows {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.sidebar {
+    position: relative !important;
+    width: 80px;
+    height: 600px;
+    margin-top: 150px;
+    padding-top: 20px;
+    margin-right: 40px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1;
+}
+
+.sidebar i {
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+.sidebar span {
+    opacity: 0;
+    pointer-events: none;
+    margin-left: 10px;
+    transition: 0.4s ease;
+}
+
+.sidebar button {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    max-width: 80px;
+    transition: 0.4s ease ;
+}
+
+.sidebar button:hover span {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sidebar button:hover {
+    max-width: 500px;
+}
+
+.editModal {
+    position: absolute;
+    transition: 0.5s ease;
+    border-radius: 18px;
+    top: 180px;
+}
+
+.modal-body {
+    border: none;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.modal {
+    backdrop-filter: blur(7px);
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.selectContext {
+    text-align: center;
+}
+
+.inputEdit option:hover {
+    margin-left: 20px;
+}
+
+.inputEdit {
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.descriptionEdit {
+    scrollbar-width: thin;
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+    /* Убираем затемнение */
+}
+
+.windows {
+    position: relative;
+    width: 100%;
+}
+
+.window:hover .editButton {
+    margin-right: 7px;
+}
+
+.editButton {
+    transition: 0.5s ease;
+    position: absolute;
+    width: 45px;
+    height: 40px;
+    top: 20px;
+    right: 50px;
+}
+
+.editButton:hover {
+    scale: 1.2;
+    box-shadow: none;
+}
+
+.deleteButton {
+    transition: 0.5s ease;
+    position: absolute;
+    font-size: 20px;
+    width: 35px;
+    height: 40px;
+    top: 20px;
+    right: 23px;
+}
+
+.deleteButton:hover {
+    scale: 1.2;
+    box-shadow: none;
+}
+
+.editButton i {
+    font-size: 21;
+}
+
+.window:hover .status {
+    margin-left: 6px;
+    box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
+}
+
+.window:hover .deadline {
+    margin-left: 6px;
+    box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
+}
+
+.window:hover .title {
+    font-weight: 600;
+}
+
+.window:hover {
+    margin-right: 3px;
+}
+
+.title {
+    transition: 0.5s ease;
+    font-size: 28px;
+    font-weight: 500;
+    position: relative;
+    bottom: 12px;
+    text-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+.status {
+    transition: 0.5s ease;
+    background-color: white;
+    position: relative;
+    left: -40px;
+    bottom: 5px;
+    width: fit-content;
+    padding: 2px 10px 2px 10px;
+    border-radius: 18px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.sDanger {
+    color: rgb(255, 0, 0);
+}
+
+.sSucсess {
+    color: rgb(0, 255, 0);
+}
+
+.sDepleted {
+    color: rgb(186, 186, 186);
+}
+
+.deadline {
+    transition: 0.9s ease;
+    background-color: white;
+    position: relative;
+    left: -40px;
+    top: 5px;
+    width: fit-content;
+    padding: 2px 10px 2px 10px;
+    border-radius: 18px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.divider {
+    position: relative;
+    left: 100px;
+    bottom: 53px;
+    height: calc(100% - 20px);
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.123);
+    border-radius: 18px;
+}
+
+.description {
+    position: relative;
+    border-radius: 10px;
+    left: 120px;
+    bottom: 230px;
+    width: calc(100% - 110px);
+    max-width: 740px;
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+/* ======================= DROPDOWN =========================== */
+.dropdown-button {
+    position: relative !important;
+}
+
+.dropdown-title {
+    transition: 0.3s ease;
+    pointer-events: all;
+    cursor: default;
+    position: relative;
+    font-weight: 500;
+    right: 17px;
+}
+
+.dropdown {
+    position: relative;
+    pointer-events: none;
+    transition: all 0.5s ease, box-shadow 1s ease;
+    padding-top: 5px;
+    border-radius: 18px;
+    max-height: 36px;
+    padding-right: 0px;
+    max-width: fit-content;
+    /* Можно изменить в зависимости от желаемой ширины кнопки списка (dropdown-title) */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown ul {
+    list-style-type: none;
+}
+
+.dropdown li {
+    list-style: none;
+    transition: 0.5s ease;
+    opacity: 0;
+    width: 100%;
+    transform: translateY(-10px);
+    margin-top: 3px;
+    margin-right: 10px;
+    padding: 1px;
+    visibility: hidden;
+}
+
+.dropdown-items {
+    margin-top: 6px;
+}
+
+.dropdown-items-layer {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.dropdown:hover {
+    pointer-events: all;
+    max-height: 600px;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.24);
+}
+
+.dropdown:has(.dropdownLayer:hover, .dropdownLayerBtn:hover) {
+    max-width: 600px;
+}
+
+.dropdown:hover li {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.dropdown-items li:hover {
+    margin-left: 2px;
+}
+
+.dropdownLayer {
+    margin-top: -6px;
+    display: flex;
+    transition: 0.5s ease;
+    max-height: 0px;
+    width: auto;
+    opacity: 0;
+}
+
+.dropdownLayerBtn {
+    display: block;
+    cursor: default;
+    padding-bottom: 6px;
+}
+
+.dropdownLayer li {
+    list-style: none;
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    margin-top: 3px;
+    visibility: hidden;
+}
+
+.dropdownLayerBtn:hover + .dropdownLayer,
+.dropdownLayer:hover {
+    max-height: 500px;
+    padding-right: 15px;
+    opacity: 1;
+}
+
+.dropdownLayerBtn:hover + .dropdownLayer li,
+.dropdownLayer:hover li {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* ========================= */
+
+.btnCloud {
+    position: relative !important;
+    transition: 0.3s ease;
+}
+
+.btnActive {
+    color: rgb(0, 255, 0);
+}
+
+.btnCompleted {
+    color: rgb(255, 0, 0);
+}
+
+.btnQueue {
+    color: rgb(186, 186, 186);
+}
+
+.selectBtn a:active i:first-child {
+    margin-left: 3px;
+}
+
+.statuses i:first-child {
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateX(-5px);
+    position: absolute;
+    font-size: 11px;
+    left: -15px;
+    margin-top: 6px;
+}
+
+.statuses li:hover i:first-child {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+/* ======================= /DROPDOWN =========================== */
+
+.cloud {
+    position: relative !important;
+}
+
+.cloudBtn {
+    position: relative !important;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.createTaskBtn {
+    position: relative !important;
+}
+
+.createTaskBtn .dropdown-items {
+    position: relative !important;
+    right: 18px;
+}
+
+.createTaskBtn .dropdown {
+    position: relative !important;
+    max-width: 220px;
+}
+
+.createTaskBtn li:hover {
+    margin-left: 0px;
+}
+
+.createTaskBtn .btnnav {
+    position: relative;
+    left: 28px;
+}
+
+.calendar {
+    width: 220px;
+}
+
+input.no-calendar[type="date"]::-webkit-inner-spin-button,
+input.no-calendar[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input.no-calendar[type="date"] {
+    -moz-appearance: textfield;
+}
+
+/* ======================= PRELOADER =========================== */
+.preloader {
+    position: fixed;
+    transition: 0.5s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% {
+        border-radius: 20%;
+        width: 60px;
+        height: 60px;
+    }
+
+    33% {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    66% {
+        border-radius: 0%;
+        width: 80px;
+        height: 20px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    100% {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* ======================= /PRELOADER =========================== */
+
+/* ======================= MODAL ANIMATION =========================== */
+.modal.fade .modal-dialog {
+    transition: transform 0.2s ease, opacity 0.2s ease-out;
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ======================= /MODAL ANIMATION =========================== */
+
+.files-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 0px 0px 18px 18px;
+    padding-bottom: 20px;
+    min-width: 300px;
+    min-height: 150px;
+}
+
+.files-title i {
+    font-size: 30px;
+    transition: 0.5s ease !important;
+    animation: swing 1.5s ease-in-out infinite;
+}
+
+/* @keyframes swing {
+    0% {
+        transform: rotate(-7deg);
+    }
+
+    50% {
+        transform: rotate(7deg);
+    }
+
+    100% {
+        transform: rotate(-7deg);
+    }
+} */
+
+.files-title:hover i {
+    transition: all 1.5s;
+    -webkit-transition: all 1.5s;
+    animation: none;
+    transform: rotate(0deg);
+}
+
+.files-container {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.files-input-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.files-cycle {
+    transition: 1s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 18px;
+    padding: 20px;
+    width: 650px;
+    z-index: 1;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.file-items {
+    margin-top: 5px;
+}
+
+.file-item button {
+    margin-left: 10px;
+    color: rgb(255, 0, 0) !important;
+}
+
+.file-item h6 {
+    position: relative;
+}
+
+.folder-create {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+.createFolderBtn .dropdown-items {
+    transition: 0.4s ease !important;
+}
+
+.createFolderBtn .dropdown {
+    z-index: 99999;
+    padding-right: -10px;
+    transition: 0.4s ease;
+    margin: -5px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    max-width: 60px !important;
+    height: 100px !important;
+}
+
+.createFolderBtn .dropdown:hover {
+    max-width: 200px !important;
+}
+
+.createFolderBtn .dropdown:hover .dropdown-title {
+    margin-right: 20px;
+}
+
+.createFolderBtn .dropdown-items {
+    transition: 0.3s ease;
+    scale: 0.4;
+}
+
+.createFolderBtn .dropdown:hover .dropdown-items {
+    scale: 1;
+}
+
+.createFolderBtn button {
+    position: absolute;
+    background: none;
+    bottom: 90px;
+    margin-left: 60px;
+    color: rgb(0, 255, 0);
+}
+
+.createFolderBtn button:hover {
+    scale: 1.25;
+    box-shadow: none;
+}
+
+input.file-to-folder-input[type="file"] {
+    display: none;
+}
+
+.file-to-folder-input {
+    display: inline-block;
+}
+
+.dropdown-folder {
+    display: flex;
+    background: none;
+    align-items: flex-start !important;
+    padding-right: 10px;
+    width: 100%;
+    z-index: 100;
+}
+
+.dropdown-folder:hover {
+    background: white;
+}
+
+.dropdown-folder .dropdown-items {
+    margin-left: 180px;
+    padding-bottom: 30px;
+}
+
+.dropdown-folder li:hover {
+    margin-left: 1px;
+}
+
+.upload-to-folder {
+    cursor: pointer;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 18px;
+}
+
+.dropdown-folder .dropdown-title {
+    position: relative;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    max-width: 160px;
+    min-width: 150px;
+}
+
+.dropdown-folder .dropdown-title a {
+    flex: 1;
+    position: relative;
+    top: -4px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.folder-add {
+    position: absolute;
+    border-radius: 18px;
+    top: 2px;
+    right: 30px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* .divide-actions {
+    width: 10px;
+    position: relative;
+    margin-left: 60px;
+} */
+
+.folder-actions {
+    position: absolute;
+    right: 64px;
+    top: 6px;
+    transition: 0.3s ease;
+    z-index: 99;
+    opacity: 0;
+}
+
+.folder-actions button {
+    background: none;
+    border: none;
+}
+
+.dropdown-folder:hover .folder-actions {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.dropdown-folder:hover .dropdown-title {
+    max-width: 400px !important;
+}
+
+.ifolder .fa-folder-open {
+    opacity: 0;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    transition: 0.3s ease;
+}
+
+.ifolder .fa-folder {
+    transition: 0.3s ease;
+}
+
+.dropdown-folder:hover .ifolder .fa-folder-open {
+    opacity: 1;
+}
+
+.dropdown-folder:hover .ifolder .fa-folder {
+    opacity: 0;
+}
+
+.folder-add button:hover {
+    box-shadow: none;
+}
+
+.folder-add button {
+    color: rgb(0, 255, 0);
+    position: absolute;
+    background: none;
+    left: 23px;
+    top: 2px;
+    transition: 0.3s ease;
+    opacity: 0;
+    z-index: 100;
+    transform: translateX(-20px);
+}
+
+.upload-to-folder i {
+    color: #000;
+    transition: 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dropdown-folder:hover .folder-add .upload-to-folder i {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0px);
+}
+
+.dropdown-folder:hover .folder-add button {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.dropdown-folder:hover .folder-add {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0px);
+}
+
+.file-to-folder-input:valid + .upload-to-folder i {
+    color: black;
+}
+
+.folder-container {
+    position: relative;
+    margin-top: 50px;
+}
+
+.folder-container h2 {
+    margin-left: 45px;
+}
+
+.folder-items {
+    transition: 0.5s ease;
+    margin-bottom: 50px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.folder-item {
+    height: 50px;
+    transition: 0.5s ease;
+}
+
+.folder-items:hover .folder-item:not(:hover) {
+    z-index: -1;
+    pointer-events: none;
+}
+
+.folder-items:hover .folder-item:has(:hover) {
+    z-index: 9999;
+}
+
+.divider-folder {
+    position: absolute;
+    left: 185px;
+    bottom: 0px;
+    height: calc(100% - 45px);
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.123);
+    border-radius: 18px;
+}
+
+.folder-move-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 18px; */
+    max-height: 256px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 13px;
+}
+
+.moveModal .modal-title {
+    scrollbar-width: thin;
+    overflow-x: auto;
+}
+
+.moveModal .modal-title span:nth-child(4) {
+    font-weight: 400 !important;
+    font-size: 17px;
+}
+
+.moveModal .modal-title .fa-turn-down {
+    position: relative;
+    top: 5px;
+}
+
+/* ====================== Context menu =========================== */
+
+.context-menu {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 4px 18px 18px 18px;
+    opacity: 0;
+    width: calc();
+    pointer-events: none;
+    position: fixed;
+    background-color: white;
+    z-index: 9999;
+    transform: scale(0.9);
+}
+
+.context-btns {
+    padding: 10px;
+    margin: 0;
+}
+
+.btnContext {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.context-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.context-menu.fade {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.btnContext:hover .fa-chevron-right {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.btnContext:hover {
+    margin-left: 2px;
+}
+
+.btnContext .fa-chevron-right {
+    position: absolute;
+    transition: 0.3s ease;
+    left: 9px;
+    margin-top: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateX(-5px);
+}
+
+.btnContext button {
+    background: none;
+    border: none;
+    position: relative;
+    right: 5px;
+}
+
+.btnContext i {
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+/* ---------------------------------------------------------------- */
+
+.context-menu-lmb {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 4px 18px 18px 18px;
+    opacity: 0;
+    width: calc();
+    pointer-events: none;
+    position: fixed;
+    background-color: white;
+    z-index: 9999;
+    transform: scale(0.9);
+}
+
+.context-menu-lmb.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.context-menu-lmb.fade {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ====================== /Context menu =========================== */
+
+.contextDelete {
+    color: red;
+}
+
+.contextDelete i {
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+.addToFolder {
+    position: relative;
+}
+
+.addModal .modal-title {
+    scrollbar-width: thin;
+    overflow-x: auto;
+}
+
+.addModal .modal-title span:nth-child(4) {
+    font-weight: 400 !important;
+    font-size: 17px;
+}
+
+.addModal .modal-title .fa-turn-down {
+    position: relative;
+    top: 5px;
+}
+
+.addModal .modal-body {
+    height: 50px;
+}
+
+.alert {
+    position: fixed;
+    transition: 1s ease;
+    border-radius: 18px 18px 18px 18px;
+    margin-top: 90vh;
+    transform: translateY(-10px);
+    animation: pulse 2s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(10px);
+        scale: 0.95;
+    }
+    100% {
+        scale: 1;
+        transform: translateY(-10px);
+    }
+}
+
+.notifications {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.alert-danger {
+    background-color: #ffffff; 
+    border: 1px solid rgb(255, 0, 0);
+    font-weight: 600;
+}
+
+.alert-success {
+    background-color: #d4edda70; 
+    border: 1px solid rgb(0, 255, 0);
+    font-weight: 600;
+}
+
+/* ====================== User =========================== */
+
+.auth {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.user {
+    position: absolute;
+    margin: 20px;
+}
+
+.login {
+
+    border-radius: 18px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.login button{
+    padding: 5px 20px 5px 20px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.login input {
+    border-radius: 11px;
+}
+
+.register input {
+    max-width: 500px;
+}
+
+.register label {
+    max-width: 200px;
+}
+
+/* ====================== /User =========================== */

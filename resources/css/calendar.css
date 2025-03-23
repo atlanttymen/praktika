@@ -1,0 +1,195 @@
+body {  
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafd;
+}
+
+/* .container{
+  margin: 0;
+  padding: 0;
+} */
+
+.header {
+  padding: 15px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.logo-container {  
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.LogoCalendar {
+  width: 50px;
+  height: auto;
+}
+
+.date-overlay {
+  color: #1967d2;
+  font-size: 14px;
+}
+
+.burger-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.burger {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: none;
+  background: transparent;
+  width: 40px;
+  height: 26px;
+}
+.burger::before,
+.burger::after {
+  content: '';
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 10px;
+  background: #000;
+}
+.burger::before {
+  top: 0;
+  box-shadow: 0 11px 0 #000;
+  transition: box-shadow .3s .15s, top .3s .15s, transform .3s;
+}
+.burger::after {
+  bottom: 0;
+  transition: bottom .3s .15s, transform .3s;
+}
+.burger-checkbox:checked + .burger::before {
+  top: 11px;
+  transform: rotate(45deg);
+  box-shadow: 0 6px 0 rgba(0,0,0,0);
+  transition: box-shadow .15s, top .3s, transform .3s .15s;
+}
+.burger-checkbox:checked + .burger::after {
+  bottom: 11px;
+  transform: rotate(-45deg);
+  transition: bottom .3s, transform .3s .15s;
+}
+.menu-list {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: grid;
+  gap: 12px;
+  padding: 42px 0;
+  margin: 0;
+  list-style-type: none;
+  transform: translateX(-100%);
+  transition: .3s;
+  width: 200px;
+}
+.menu-item {
+  display: block;
+  padding: 8px;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.burger-checkbox:checked ~ .menu-list {
+  transform: translateX(0);
+}
+
+
+
+/*---Content-------------------------------------------------------------*/
+
+.content {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+tr {
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+td {
+  padding: 25px;
+  border: 1px solid #ddd;
+}
+
+/* Модальное окно */
+#eventModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Убедитесь, что модальное окно выше других элементов */
+}
+
+#eventModal form {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  width: 400px; /* Ширина модального окна */
+  max-width: 90%; /* Адаптивная ширина */
+}
+
+#eventModal h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
